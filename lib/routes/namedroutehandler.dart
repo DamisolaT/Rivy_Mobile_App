@@ -6,4 +6,6 @@ class NamedRouter {
   static const String onboarding3Screen = 'onboarding3';
   static const String onboarding4Screen = 'onboarding4';
    static const String loginScreen = 'loginScreen';
+   static const String verifyOtpScreen = 'verifyOtp';
+   static const String signUpScreen = 'signUpScreen';
 }

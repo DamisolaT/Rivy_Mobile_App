@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:rivy_app/core/customs/custom_app_bar.dart';
 import 'package:rivy_app/core/customs/custom_text.dart';
 import 'package:rivy_app/core/utils/app_assets.dart';
+import 'package:rivy_app/routes/namedroutehandler.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -17,19 +19,13 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () => Navigator.pop(context),
-        ),
-        elevation: 0,
-        backgroundColor: const Color(0xFF2D5A4A),
-      ),
+      appBar: const CustomAppBar(),
       body: Padding(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(height: 40,),
             CustomText(
               text: 'Let\'s get Started',
               fontSize: 30,
@@ -63,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Image.asset(AppAssets.nijalogo, height: 24, width: 24),
                       const SizedBox(width: 5),
                       CustomText(
-                        text: '+1',
+                        text: '+234',
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
                         fontSize: 16,
@@ -118,18 +114,29 @@ class _LoginScreenState extends State<LoginScreen> {
 
             SizedBox(
               width: double.infinity,
-              height: 48,
+              height: 50,
               child: ElevatedButton(
-                onPressed: isChecked ? () {} : null,
+                onPressed: isChecked
+                    ? () {
+                        Navigator.pushReplacementNamed(
+                          context,
+                          NamedRouter.verifyOtpScreen,
+                        );
+                      }
+                    : null,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: isChecked
                       ? Colors.green
                       : Colors.grey.shade300,
-                  foregroundColor: Colors.green.shade50,
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(6),
+                  ),
                 ),
-                child: const Text('Next'),
+                child: const Text("Next"),
               ),
             ),
+
             const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -139,7 +146,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: TextStyle(fontSize: 14),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushReplacementNamed(
+                          context,
+                          NamedRouter.signUpScreen,
+                        );
+                  },
                   child: const Text(
                     "Sign up ",
                     style: TextStyle(
