@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rivy_app/core/utils/app_butt.dart';
+import 'package:rivy_app/core/utils/custom_onboarding_button.dart';
 
 
 import 'package:rivy_app/routes/namedroutehandler.dart';
@@ -11,7 +11,7 @@ class Onboarding1Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green.shade700,
+      backgroundColor: const Color(0xFF2D5A4A),
       body: SafeArea(
         child: Stack(
           children: [
@@ -33,17 +33,17 @@ class Onboarding1Screen extends StatelessWidget {
                         color: Colors.black,
                       ),
                       children: [
-                        TextSpan(text: 'Finance to power your \n'),
+                        TextSpan(text:'Finance to power your \n',style: TextStyle(color: Colors.lightGreen),),
                         TextSpan(
                           text: 'home',
                           style: TextStyle(color: Colors.white),
                         ),
-                        TextSpan(text: ' or business'),
+                        TextSpan(text: ' or business', style: TextStyle(color: Colors.lightGreen),),
                       ],
                     ),
                   ),
 
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 42),
 
                   RichText(
                     textAlign: TextAlign.start,
@@ -52,9 +52,11 @@ class Onboarding1Screen extends StatelessWidget {
                       children: [
                         TextSpan(
                           text: 'Get the energy solution you need on \n',
+                          style: TextStyle(color: Colors.lightGreen),
                         ),
                         WidgetSpan(child: SizedBox(width: 20)),
-                        TextSpan(text: 'flexible terms that work for you'),
+                        TextSpan(text: 'flexible terms that work for you',
+                        style: TextStyle(color: Colors.lightGreen),),
                       ],
                     ),
                   ),
@@ -70,10 +72,13 @@ class Onboarding1Screen extends StatelessWidget {
                   text: "See More",
                   onPressed: () {
                     Navigator.pushReplacementNamed(context, NamedRouter.onboarding2Screen);
-                  },
+                  }, 
+                  color: Colors.green,
+                  textStyle: TextStyle(color: Colors.white,fontSize: 16),
                 ),
               ),
             ),
+            SizedBox(height: 30,)
           ],
         ),
       ),

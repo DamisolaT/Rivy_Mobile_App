@@ -34,7 +34,7 @@ class EnergyStackBar extends StatelessWidget {
          CustomText(
           text: 'Skip',
           color: Colors.white,
-          fontSize: 20,
+          fontSize: 18,
         ),
       ],
     );

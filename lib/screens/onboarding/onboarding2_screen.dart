@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rivy_app/core/utils/app_butt.dart';
+import 'package:rivy_app/core/utils/custom_onboarding_button.dart';
 
 import 'package:rivy_app/routes/namedroutehandler.dart';
 import 'package:rivy_app/widgets/energy_card.dart';
@@ -23,7 +23,7 @@ class Onboarding2Screen extends StatelessWidget {
                 child: Column(
                   children: [
                     EnergyStackBar(),
-                    SizedBox(height: 40),
+                    SizedBox(height: 20),
                     RichText(
                       textAlign: TextAlign.center,
                       text: const TextSpan(
@@ -64,10 +64,10 @@ class Onboarding2Screen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(height: 30,),
+                    SizedBox(height: 20,),
                     
                     GreenGridWidget(),
-                     SizedBox(height: 40,),
+                     SizedBox(height: 20,),
                     EnergyCard(),
                     SizedBox(height: 20,),
                     CustomOnboardingButton(
@@ -75,12 +75,15 @@ class Onboarding2Screen extends StatelessWidget {
                     onPressed: () {
                       Navigator.pushReplacementNamed(context, NamedRouter.onboarding3Screen);
                     },
+                    textStyle: TextStyle(color: Colors.white),
+                    color: Colors.green,
                   ),
                    
                   ],
                 ),
               ),
             ),
+            SizedBox(height: 30,)
           ],
         ),
       ),

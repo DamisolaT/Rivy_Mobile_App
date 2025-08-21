@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rivy_app/core/utils/app_butt.dart';
+import 'package:rivy_app/core/utils/custom_onboarding_button.dart';
 import 'package:rivy_app/routes/namedroutehandler.dart';
 import 'package:rivy_app/widgets/energy_stack.dart';
 
@@ -81,7 +81,7 @@ class Onboarding3Screen extends StatelessWidget {
                               ),
                               SizedBox(height: 10,),
                               Text(
-                              'Fund and sacle micro-grids quickly,\n affordably, and sustainably', 
+                              'Fund and scale micro-grids quickly,\n affordably, and sustainably', 
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 15,
@@ -94,15 +94,21 @@ class Onboarding3Screen extends StatelessWidget {
                       ),
                     ),
                     Spacer(),
-                     CustomOnboardingButton(
-                    text: "Next",
-                    onPressed: () {
-                      Navigator.pushReplacementNamed(context, NamedRouter.onboarding4Screen);
-                    },
-                  ),
+                     Padding(
+                       padding: const EdgeInsets.only(bottom: 40),
+                       child: CustomOnboardingButton(
+                                           text: "Next",
+                                           onPressed: () {
+                        Navigator.pushReplacementNamed(context, NamedRouter.onboarding4Screen);
+                                           },
+                                           textStyle: TextStyle(color: Colors.white),
+                                           color: Colors.green,
+                                         ),
+                     ),
                 ],
               ),
-            )
+            ),
+            //rSizedBox(height: 30,)
           ],
         )),
     );

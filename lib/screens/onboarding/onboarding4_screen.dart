@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rivy_app/core/customs/custom_text.dart';
-import 'package:rivy_app/core/utils/app_butt.dart';
+import 'package:rivy_app/core/utils/custom_onboarding_button.dart';
 import 'package:rivy_app/routes/namedroutehandler.dart';
 import 'package:rivy_app/widgets/energy_stack.dart';
 
@@ -45,8 +45,6 @@ class Onboarding4Screen extends StatelessWidget {
                     fontSize: 20,
                   ),
 
-                  
-
                   SizedBox(height: 20),
                   CustomText(
                     text: 'Solar Financing',
@@ -61,7 +59,7 @@ class Onboarding4Screen extends StatelessWidget {
                     fontSize: 20,
                     color: Colors.black,
                   ),
-                  
+
                   SizedBox(height: 20),
                   CustomText(
                     text: 'Solar Products',
@@ -76,30 +74,43 @@ class Onboarding4Screen extends StatelessWidget {
                     fontSize: 20,
                     color: Colors.black,
                   ),
-                  SizedBox(height: 10),
+
                   Spacer(),
-                  CustomOnboardingButton(
-                    text: "Apply for loan",
-                    onPressed: () {
-                      Navigator.pushReplacementNamed(
-                        context,
-                        NamedRouter.loginScreen,
-                      );
-                    },
-                  ),
-                  SizedBox(height: 10,),
-                  CustomOnboardingButton(
-                    text: "Buy your solar products",
-                    onPressed: () {
-                      Navigator.pushReplacementNamed(
-                        context,
-                        NamedRouter.onboarding1Screen,
-                      );
-                    },
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 40),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        CustomOnboardingButton(
+                          text: "Apply for loan",
+                          onPressed: () {
+                            Navigator.pushReplacementNamed(
+                              context,
+                              NamedRouter.loginScreen,
+                            );
+                          },
+                          textStyle: TextStyle(color: Colors.white),
+                          color: Colors.green,
+                        ),
+                        SizedBox(height: 10),
+                        CustomOnboardingButton(
+                          text: "Buy your solar products",
+                          onPressed: () {
+                            Navigator.pushReplacementNamed(
+                              context,
+                              NamedRouter.onboarding1Screen,
+                            );
+                          },
+                          textStyle: TextStyle(color: Colors.white),
+                          color: Colors.green,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
             ),
+            SizedBox(height: 50),
           ],
         ),
       ),

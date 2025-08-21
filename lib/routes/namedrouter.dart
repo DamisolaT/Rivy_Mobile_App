@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rivy_app/routes/namedroutehandler.dart';
+import 'package:rivy_app/screens/account/create_account_screen.dart';
+import 'package:rivy_app/screens/account/form_screen.dart';
+import 'package:rivy_app/screens/account/successful_screen.dart';
 import 'package:rivy_app/screens/login/login_screen.dart';
 
 import 'package:rivy_app/screens/onboarding/onboarding1_screen.dart';
@@ -19,5 +22,9 @@ Map<String, WidgetBuilder> get Iroutes => {
    NamedRouter.onboarding4Screen: (context) => Onboarding4Screen(),
    NamedRouter.loginScreen: (context) => LoginScreen(),
    NamedRouter.verifyOtpScreen: (context) => VerifyOtpScreen(),
-    NamedRouter.signUpScreen: (context) => SignUpScreen() 
+    NamedRouter.signUpScreen: (context) => SignUpScreen(),
+    NamedRouter.createAccountScreen: (context) => CreateAccountScreen(), 
+    NamedRouter.formScreen: (context) => FormScreen(),
+    NamedRouter.successfulScreen: (context) => SuccessfulScreen()
 };
+

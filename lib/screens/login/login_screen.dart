@@ -82,6 +82,8 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 Checkbox(
                   value: isChecked,
+                  checkColor: Colors.green,
+                  fillColor: MaterialStateProperty.all(Colors.white), 
                   onChanged: (value) {
                     setState(() {
                       isChecked = value ?? false;

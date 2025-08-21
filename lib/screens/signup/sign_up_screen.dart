@@ -4,8 +4,9 @@ import 'package:rivy_app/core/constants/validator.dart';
 import 'package:rivy_app/core/customs/custom_app_bar.dart';
 import 'package:rivy_app/core/customs/custom_text.dart';
 import 'package:rivy_app/core/customs/custom_textformfield.dart';
-import 'package:rivy_app/core/utils/app_butt.dart';
+import 'package:rivy_app/core/utils/custom_onboarding_button.dart';
 import 'package:rivy_app/routes/namedroutehandler.dart';
+import 'package:rivy_app/widgets/footer.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -23,6 +24,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   void dispose() {
     _emailController.dispose();
+    _phoneNumberController.dispose();
     _referralController.dispose();
     super.dispose();
   }
@@ -37,10 +39,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Form(
             key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: ListView(
               children: [
-                SizedBox(height: 40,),
+                const SizedBox(height: 40),
                 CustomText(
                   text: 'Let\'s get Started',
                   fontSize: 30,
@@ -55,39 +56,46 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   color: Colors.green.shade700,
                   fontWeight: FontWeight.w500,
                 ),
-                SizedBox(height: 40),
+                const SizedBox(height: 40),
+
+                /// Phone Number
                 CustomBorderedTextFormField(
                   title: 'Phone Number',
-                  hintText: "Enter your full name",
+                  hintText: "Enter your phone number",
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter your full name';
+                      return 'Please enter your phone number';
                     }
                     return null;
                   },
                   controller: _phoneNumberController,
                 ),
                 const SizedBox(height: 16),
+
+                /// Email
                 CustomBorderedTextFormField(
                   title: 'Email Address',
                   hintText: "Enter your email address",
                   validator: FormValidator.validateEmail,
                   inputFormatters: [
-                    FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z@._-]')),
+                    FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9@._-]')),
                   ],
                   controller: _emailController,
                 ),
                 const SizedBox(height: 16),
+
+                /// Referral Code
                 CustomBorderedTextFormField(
                   title: 'Referral Code',
                   hintText: '688OYX',
-                  validator: FormValidator.validateEmail,
                   inputFormatters: [
-                    FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z@._-]')),
+                    FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9]')),
                   ],
                   controller: _referralController,
                 ),
-                SizedBox(height: 40),
+                const SizedBox(height: 40),
+
+                /// Already have an account? -> Login
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -95,7 +103,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       "Already have an account?",
                       style: TextStyle(fontSize: 14),
                     ),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                     GestureDetector(
                       onTap: () {
                         Navigator.pushReplacementNamed(
@@ -114,7 +122,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ],
                 ),
-                SizedBox(height: 70),
+                const SizedBox(height: 70),
+
+                /// Continue Button
                 CustomOnboardingButton(
                   text: "Continue",
                   onPressed: () {
@@ -123,28 +133,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       NamedRouter.onboarding1Screen,
                     );
                   },
+                  textStyle: const TextStyle(color: Colors.white),
+                  color: Colors.green,
                 ),
-                SizedBox(height: 40),
-                Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CustomText(
-                        text: '@2025 Rivy, All rights reserved. v3.6.9',
-                        fontSize: 10,
-                        color: Colors.green.shade700,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      const SizedBox(height: 20),
-                      CustomText(
-                        text: 'Term Policy - Privacy Policy',
-                        fontSize: 10,
-                        color: Colors.green.shade700,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ],
-                  ),
-                ),
+                const SizedBox(height: 40),
+
+                /// Footer
+                Footer(),
               ],
             ),
           ),
@@ -153,3 +148,5 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 }
+
+

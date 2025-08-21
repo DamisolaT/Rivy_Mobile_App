@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:rivy_app/core/customs/custom_app_bar.dart';
 import 'package:rivy_app/core/customs/custom_text.dart';
+import 'package:rivy_app/routes/namedroutehandler.dart';
 
 class VerifyOtpScreen extends StatefulWidget {
   const VerifyOtpScreen({super.key});
@@ -97,7 +98,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
               child: ElevatedButton(
                 onPressed: currentText.length == 6
                     ? () {
-                        
+                        Navigator.pushReplacementNamed(context, NamedRouter.createAccountScreen); 
                         
                       }
                     : null,
@@ -113,7 +114,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
             ),
             const SizedBox(height: 20),
 
-            // Resend text
+            
             Center(
               child: Text(
                 _secondsRemaining > 0

@@ -8,4 +8,7 @@ class NamedRouter {
    static const String loginScreen = 'loginScreen';
    static const String verifyOtpScreen = 'verifyOtp';
    static const String signUpScreen = 'signUpScreen';
+   static const String createAccountScreen= 'createAccountScreen';
+   static const String formScreen= 'formScreen';
+    static const String successfulScreen= 'successfulScreen';
 }
