@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:rivy_app/core/customs/custom_text.dart';
+import 'package:rivy_app/routes/namedroutehandler.dart';
 
 class EnergyStackBar extends StatelessWidget {
+  final bool showSkip; 
+
   const EnergyStackBar({
     super.key,
+    this.showSkip = true, 
   });
 
   @override
@@ -23,7 +27,7 @@ class EnergyStackBar extends StatelessWidget {
               child: const Icon(Icons.menu, color: Colors.white),
             ),
             const SizedBox(width: 10),
-             CustomText(
+            CustomText(
               text: 'EnergyStack',
               color: Colors.green.shade500,
               fontSize: 25,
@@ -31,11 +35,22 @@ class EnergyStackBar extends StatelessWidget {
             ),
           ],
         ),
-         CustomText(
-          text: 'Skip',
-          color: Colors.white,
-          fontSize: 18,
-        ),
+
+        // Only show skip if allowed
+        if (showSkip)
+          GestureDetector(
+            onTap: () {
+              Navigator.pushReplacementNamed(
+                context,
+                NamedRouter.onboarding4Screen,
+              );
+            },
+            child: CustomText(
+              text: 'Skip',
+              color: Colors.green.shade500,
+              fontSize: 18,
+            ),
+          ),
       ],
     );
   }

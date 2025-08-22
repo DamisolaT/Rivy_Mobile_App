@@ -1,6 +1,6 @@
 class AppAssets {
   //images
-  static String splashImage = 'assets/images/rivyhq_logo.jpg';
+  static String splashImage = 'assets/images/rivy_logo.png';
   static String nijalogo = 'assets/images/nija_logo.png';
   
   

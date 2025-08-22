@@ -8,7 +8,8 @@ class Footer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Align(
+      alignment: Alignment.bottomCenter, 
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

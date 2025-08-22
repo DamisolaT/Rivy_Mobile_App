@@ -35,106 +35,105 @@ class _FormScreenState extends State<FormScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      resizeToAvoidBottomInset: true, // 👈 makes sure keyboard pushes content up
       appBar: const CustomAppBar(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          child: Form(
-            key: _formKey,
-            child: ListView(
-              children: [
-                CustomText(
-                  text: 'Let\'s get Started',
-                  fontSize: 30,
-                  color: Colors.green.shade700,
-                  fontWeight: FontWeight.bold,
-                ),
-                const SizedBox(height: 5),
-                CustomText(
-                  text: 'Fill your information below',
-                  fontSize: 15,
-                  color: Colors.green.shade700,
-                  fontWeight: FontWeight.w500,
-                ),
-                const SizedBox(height: 35),
+          child: Column(
+            children: [
+              /// Expanded makes form scrollable when keyboard opens
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomText(
+                          text: 'Let\'s get Started',
+                          fontSize: 30,
+                          color: Colors.green.shade700,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        const SizedBox(height: 5),
+                        CustomText(
+                          text: 'Fill your information below',
+                          fontSize: 15,
+                          color: Colors.green.shade700,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        const SizedBox(height: 35),
 
-                /// Phone Number
-                CustomBorderedTextFormField(
-                  title: 'Phone Number',
-                  hintText: "Enter your full name",
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your full name';
-                    }
-                    return null;
-                  },
-                  controller: _firstNameController,
-                ),
-                const SizedBox(height: 16),
+                        /// First Name
+                        CustomBorderedTextFormField(
+                          title: 'First Name',
+                          hintText: "Enter your first name",
+                          
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z@._-]')),
+                          ],
+                          controller: _firstNameController,
+                        ),
+                        const SizedBox(height: 16),
 
-                /// First Name
-                CustomBorderedTextFormField(
-                  title: 'First Name',
-                  hintText: "Enter your first name",
-                  validator: FormValidator.validateEmail,
-                  inputFormatters: [
-                    FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z@._-]')),
-                  ],
-                  controller: _surNameController,
-                ),
-                const SizedBox(height: 16),
+                        /// Surname
+                        CustomBorderedTextFormField(
+                          title: 'Surname',
+                          hintText: 'Surname',
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z@._-]')),
+                          ],
+                          controller: _surNameController,
+                        ),
+                        const SizedBox(height: 16),
 
-                /// Surname
-                CustomBorderedTextFormField(
-                  title: 'Surname',
-                  hintText: 'Surname',
-                  inputFormatters: [
-                    FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z@._-]')),
-                  ],
-                  controller: _surNameController,
-                ),
-                const SizedBox(height: 16),
+                        /// BVN
+                        CustomBorderedTextFormField(
+                          title: 'BVN',
+                          hintText: 'BVN',
+                           keyboardType: TextInputType.number, 
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly,
+                          ],
+                          controller: _bvnController,
+                        ),
+                        const SizedBox(height: 16),
 
-                /// BVN
-                CustomBorderedTextFormField(
-                  title: 'BVN',
-                  hintText: 'BVN',
-                  inputFormatters: [
-                    FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-                  ],
-                  controller: _bvnController,
-                ),
-                const SizedBox(height: 16),
+                        /// Date of Birth
+                        CustomBorderedTextFormField(
+                          title: 'Date Of Birth',
+                          hintText:'DD/MM/YYYY',
+                           keyboardType: TextInputType.datetime,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(RegExp(r'[0-9/]')),
+                          ],
+                          controller: _dateOfBirthController,
+                        ),
+                        const SizedBox(height: 40),
 
-                /// Date of Birth
-                CustomBorderedTextFormField(
-                  title: 'Date Of Birth',
-                  hintText: 'Date of birth',
-                  inputFormatters: [
-                    FilteringTextInputFormatter.allow(RegExp(r'[0-9/]')),
-                  ],
-                  controller: _dateOfBirthController,
+                        /// Button
+                        CustomOnboardingButton(
+                          text: "Continue",
+                          onPressed: () {
+                            Navigator.pushReplacementNamed(
+                              context,
+                              NamedRouter.successfulScreen,
+                            );
+                          },
+                          textStyle: const TextStyle(color: Colors.white),
+                          color: Color(0xFF2D5A4A),
+                        ),
+                        
+                      ],
+                    ),
+                  ),
                 ),
-                const SizedBox(height: 98),
+              ),
 
-                /// Button
-                CustomOnboardingButton(
-                  text: "Continue",
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(
-                      context,
-                      NamedRouter.successfulScreen,
-                    );
-                  },
-                  textStyle: const TextStyle(color: Colors.white),
-                  color: Colors.green,
-                ),
-                const SizedBox(height: 30),
-
-                /// Footer
-               Footer(),
-              ],
-            ),
+              /// Footer pinned at bottom
+              const Footer(),
+            ],
           ),
         ),
       ),
